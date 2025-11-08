@@ -194,7 +194,7 @@ stuff installed in the environment:
 
 Refer to "[[Understanding Installed Libraries]]" to get an idea of what Libraries are associated to this project
 
-Refer to "[[Dumb Shit I learned While Troubleshooting This]]" to see what issues were encountered and how they were resolved
+Refer to "[[Dumb Stuff I learned While Troubleshooting This]]" to see what issues were encountered and how they were resolved
 
 site recommendation I just received:
 https://cyber-atlas.caecommunity.org/competitions

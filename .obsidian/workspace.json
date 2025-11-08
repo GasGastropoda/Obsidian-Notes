@@ -11,10 +11,14 @@
             "id": "b01cefcf3afc625b",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Obsidian Vaults/RIC 2025 - Web Scraping Project/Dumb Stuff I learned While Troubleshooting This.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Dumb Stuff I learned While Troubleshooting This"
             }
           }
         ]
@@ -173,8 +177,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "e392f846a633b47a",
+  "active": "b01cefcf3afc625b",
   "lastOpenFiles": [
+    "Obsidian Vaults/RIC 2025 - Web Scraping Project/Building a spider with Scrapy.md",
+    "Obsidian Vaults/RIC 2025 - Web Scraping Project/Dumb Stuff I learned While Troubleshooting This.md",
     "Obsidian Vaults/Real World Skill Development/Real World Skill Development/Skill Checklist.md",
     "Obsidian Vaults/Real World Skill Development/Real World Skill Development/Attacking Active Directory - 0 to 0.9 (NOTES).md",
     "Obsidian Vaults/Real World Skill Development/Real World Skill Development/Active Directory Skills.md",
@@ -183,9 +189,8 @@
     "Obsidian Vaults/RIC 2025 - Web Scraping Project/Understanding Installed Libraries.md",
     "Obsidian Vaults/RIC 2025 - Web Scraping Project/Understanding API Literacy.md",
     "Obsidian Vaults/RIC 2025 - Web Scraping Project/Robots-compliant Guidelines.md",
-    "Obsidian Vaults/RIC 2025 - Web Scraping Project/Dumb Shit I learned While Troubleshooting This.md",
+    "Obsidian Vaults/RIC 2025 - Web Scraping Project/Dumb Stuff I learned While Troubleshooting This.md",
     "Obsidian Vaults/RIC 2025 - Web Scraping Project/Day 1 - Get Oriented.md",
-    "Obsidian Vaults/RIC 2025 - Web Scraping Project/Building a spider with Scrapy.md",
     "Obsidian Vaults/RIC 2025 - Web Scraping Project/10 Day Roadmap (Hands-on Coding Focus).md",
     "Obsidian Vaults/Malware Analysis Studies/Understanding PE Headers.md",
     "Obsidian Vaults/Malware Analysis Studies/SysInternals - Strings.md",
