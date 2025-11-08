@@ -11,14 +11,10 @@
             "id": "b01cefcf3afc625b",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Obsidian Vaults/Certification Notes/CyberWarfare Labs.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "CyberWarfare Labs"
+              "title": "New tab"
             }
           }
         ]
@@ -177,9 +173,35 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "b01cefcf3afc625b",
+  "active": "e392f846a633b47a",
   "lastOpenFiles": [
+    "Obsidian Vaults/Real World Skill Development/Real World Skill Development/Skill Checklist.md",
+    "Obsidian Vaults/Real World Skill Development/Real World Skill Development/Attacking Active Directory - 0 to 0.9 (NOTES).md",
+    "Obsidian Vaults/Real World Skill Development/Real World Skill Development/Active Directory Skills.md",
+    "Obsidian Vaults/Real World Skill Development/Real World Skill Development",
+    "Obsidian Vaults/RIC 2025 - Web Scraping Project/Understanding Robots.txt.md",
+    "Obsidian Vaults/RIC 2025 - Web Scraping Project/Understanding Installed Libraries.md",
+    "Obsidian Vaults/RIC 2025 - Web Scraping Project/Understanding API Literacy.md",
+    "Obsidian Vaults/RIC 2025 - Web Scraping Project/Robots-compliant Guidelines.md",
+    "Obsidian Vaults/RIC 2025 - Web Scraping Project/Dumb Shit I learned While Troubleshooting This.md",
+    "Obsidian Vaults/RIC 2025 - Web Scraping Project/Day 1 - Get Oriented.md",
+    "Obsidian Vaults/RIC 2025 - Web Scraping Project/Building a spider with Scrapy.md",
+    "Obsidian Vaults/RIC 2025 - Web Scraping Project/10 Day Roadmap (Hands-on Coding Focus).md",
+    "Obsidian Vaults/Malware Analysis Studies/Understanding PE Headers.md",
+    "Obsidian Vaults/Malware Analysis Studies/SysInternals - Strings.md",
+    "Obsidian Vaults/Malware Analysis Studies/Practical Malware Analysis - The Hands-On Guide to Dissecting Malicious Software.md",
+    "Obsidian Vaults/Malware Analysis Studies/Pasted image 20251108000437.png",
+    "Obsidian Vaults/Malware Analysis Studies/Pasted image 20251103030729.png",
+    "Obsidian Vaults/Malware Analysis Studies/Pasted image 20251027005644.png",
+    "Obsidian Vaults/Malware Analysis Studies/Pasted image 20251027005624.png",
+    "Obsidian Vaults/Malware Analysis Studies/PART 1 - BASIC ANALYSIS.md",
+    "Obsidian Vaults/Malware Analysis Studies/PART 0 - PRIMER.md",
+    "Obsidian Vaults/Malware Analysis Studies/Books and Resources Used.md",
+    "Obsidian Vaults/Malware Analysis Studies/Appendix A - Important Windows Functions.md",
+    "Obsidian Vaults/Certification Notes/Index.md",
+    "Obsidian Vaults/Certification Notes/CyberWarfare Labs.md",
+    "Obsidian Vaults/Certification Notes/Certified Red Team Analyst (CRTA).md",
     "Obsidian Vaults/Certification Notes/CRTA Notes.md",
-    "Obsidian Vaults/Certification Notes/Certified Red Team Analyst (CRTA).md"
+    "README.md"
   ]
 }
