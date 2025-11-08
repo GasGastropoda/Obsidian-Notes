@@ -1,0 +1,184 @@
+{
+  "main": {
+    "id": "05c9017cd72163f6",
+    "type": "split",
+    "children": [
+      {
+        "id": "1ceca86d24db3d0a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a6e9cbe05b91e414",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Dumb Shit I learned While Troubleshooting This.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Dumb Shit I learned While Troubleshooting This"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "d7d25b20d22e6a20",
+    "type": "split",
+    "children": [
+      {
+        "id": "bde52a66e1df9246",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9d320356db60b143",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "21f7565745527c71",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "6c92fef141844873",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "8ec41c0d08d966a6",
+    "type": "split",
+    "children": [
+      {
+        "id": "e0960c64c4573f6c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f05ffce33b290b5b",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Robots-compliant Guidelines.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Robots-compliant Guidelines"
+            }
+          },
+          {
+            "id": "8324a14cc92ea59e",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Robots-compliant Guidelines.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Robots-compliant Guidelines"
+            }
+          },
+          {
+            "id": "daaf3b9f255ab485",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "1c667117ccf2c84b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Robots-compliant Guidelines.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Robots-compliant Guidelines"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "a6e9cbe05b91e414",
+  "lastOpenFiles": [
+    "Robots-compliant Guidelines.md",
+    "Dumb Shit I learned While Troubleshooting This.md",
+    "Building a spider with Scrapy.md",
+    "Understanding Installed Libraries.md",
+    "Understanding Robots.txt.md",
+    "10 Day Roadmap (Hands-on Coding Focus).md",
+    "Day 1 - Get Oriented.md",
+    "Understanding API Literacy.md",
+    "Pasted image 20251007160016.png"
+  ]
+}

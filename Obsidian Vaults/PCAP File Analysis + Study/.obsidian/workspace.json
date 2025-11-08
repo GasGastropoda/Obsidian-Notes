@@ -1,0 +1,179 @@
+{
+  "main": {
+    "id": "5d1790c515ddfcf2",
+    "type": "split",
+    "children": [
+      {
+        "id": "e7ce3020ceba693e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a7bce6d5555758f1",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "066b82e5f1c071b2",
+    "type": "split",
+    "children": [
+      {
+        "id": "f7fceaffc06b58de",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "88d055876b5b1de4",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "b6626318163355b1",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "78414794ffa84d60",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "908171d22f656f74",
+    "type": "split",
+    "children": [
+      {
+        "id": "9ed00ed9a08e629b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "60e3438cca65dc78",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "HTTP Requests and Response Codes.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": false
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for HTTP Requests and Response Codes"
+            }
+          },
+          {
+            "id": "57667a49449acc67",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "8cfcb2018c325af9",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "b0680bfdae981287",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "HTTP Requests and Response Codes.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of HTTP Requests and Response Codes"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "a7bce6d5555758f1",
+  "lastOpenFiles": [
+    "Untitled.canvas",
+    "HTTP Requests and Response Codes.md",
+    "TCP Flags and Hex Values.md",
+    "ICMP Types and Messages.md",
+    "Wireshark Filters for Network Analysis.md",
+    "HTTP Requests.md",
+    "TLS Handshake Codes.md",
+    "Tips and Tricks to Analyze.md",
+    "Welcome.md"
+  ]
+}

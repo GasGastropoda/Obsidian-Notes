@@ -1,0 +1,53 @@
+### what it means in practice:
+- identifying yourself clearly with a distinct User-Agent String including the project name, version, and a way to contact you
+	- **UA and Contact**:
+		- custom UA string
+		- Include a From or Contact header if you send HEAD/GET with a contact header
+- fetch and parse ```/robots.txt``` for every domain you plan to touch
+	- choose the most specific User-Agent block (your exact name, otherwise '\*')
+	- apply the 'longest-path match wins' mindset, with ```allow``` beating ```disallow``` when equal length
+	- if there's a ```crawl-delay``` present, respect it
+	- **Robots Gate:**
+		- before any crawl, request ```/robots.txt```
+		- if not reachable, treat it as allow-all but be conservative with rate limiting and scope
+		- build a tiny policy object from robots:
+			- allowed paths
+			- disallowed paths
+			- crawl-delay
+			- sitemap
+	- **Scope Guard:
+		- maintain an allowlist of paths you intend to visit
+		- Reject any URL that:
+			- contains query params that imply search spam (eg. ```?sort=``` loops)
+			- goes to user profiles if not needed
+	- **Rate Limiting**:
+		- start with 1 request per second, burst <=5, then back off
+		- respect ```Crawl-delay```if present
+		- add exponential backoff on 429/503; stop after a few retries
+	- **Timing**
+		- run during off-peak hours in a site's local timezone. log the timezone you assumed.
+	- **Caching**
+		- cache responses by URL for at minimum 24 hours while you iterate
+		- don't refetch identical pages in a single run
+	- **Change detection**
+		- if you crawl the same page again, use ```If-Modified-Since``` / ```ETag```when possible to reduce bandwidth
+	- **Error Handling**
+		- treat 401/403 as hard stops (don't evade them)
+		- treat repeated 5xx as "server struggling", sleep and abort the run
+	- **Data Minimization**
+		- collect only the fields you need 
+		- avoid scraping PII unless necessary and clearly allowed
+	- **Provenance**
+		- for each row, store source URL and Timestamp fetched so reviewers can verify later
+	- **Readme Transparency**
+		- documents the purpose, scope, domains, compliance approach, rate limits, and how sites can contact you to opt-out
+	- **Professional extras**
+		- Dry run mode: reads pages, logs what would be saved, but doesn't produce an output
+		- Throttle knob: config value like "max_requests_per_minute" you can lower on shared networks
+		- robot audit log: write a summary for each domain with: matched UA block, disallows, allows, and their crawl-delay
+		- do-not-crawl list: local file you can update instantly if anyone asks you to stop
+- Prefer official APIs when available. They have clearer terms and rate limits
+- Honor the site's Terms of Service. if it forbids scraping, don't scrape it. Academic use isn't an exemption.
+- No Login walls. Don't bypass walls that crosses ethical/legal lines
+- Minimize load by caching aggressively, avoid pagination, and don't fetch assets you don't need (images/CSS/JS)
+	  
