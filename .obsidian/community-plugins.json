@@ -1,5 +1,6 @@
 [
   "obsidian-git",
   "obsidian-discordrpc",
-  "obsidian-wakatime"
+  "obsidian-wakatime",
+  "code-styler"
 ]
