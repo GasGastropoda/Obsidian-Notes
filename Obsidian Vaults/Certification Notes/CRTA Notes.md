@@ -115,3 +115,79 @@
 - ***Militarized Zone Network (MZ Network)***:
 	- zoning with maximum security makes it the most secure segment in the environment
 	- these zones would harbor any devices that contain critical information about the organization. All operations in the organization would be managed from the militarized network.
+- ***Tactics, Techniques, and Procedures (TTPs):***
+	- explains how TA's plan and manage their attacks
+	- explains the methods associated with a specific actor or group
+	- Tactic = description of TA behavior
+	- Techniques = description of behavior in the context of the tactic
+	- Procedures = highly detailed description in the context of a technique
+- ***Listener***:
+	- waits for an incoming connection from the target
+	- in the lab scenario, the kali machine listens while the target connects back to the machine after successful exploitation
+	- properly defined as ==opening a port and waiting for a connection from the target==
+	- netcat is one of the best examples of a listener tool on windows and linux
+- ***Exploitation***:
+	- phase performed after a vulnerability is identified
+	- services running on a system, a web app, or software are often the primary targets of exploitation
+	- improper vulnerability identification can crash the target, so it must be intensely enumerated before entering this phase
+	- access to the vulnerable system can be physical or remote. If the exploit is successful, the payload can be executed.
+- ***Singles*** = self-contained payload assigned to do a specific task
+	- ex. payload/windows/adduser
+- ***Stagers*** = payloads used to download a larger payload from the attacker machine to the target machine. They create a network connection between the attacker and the victim.
+	- ex. payload/windows/shell/bind_tcp
+- ***Stages*** = large payloads downloaded by the stagers, then later executed. These are assigned to do complex tasks (remote desktop, meterpreter, etc.)
+- ***Shells***:
+	- non-GUI; allows you to interact and manage the environment through the command line
+	- used for administrative purposes
+- ***Reverse Shells***:
+	- creates an interface that causes the target machine to connect back to the attacker box
+	- all communication between the two devices traverses through specific TCP ports
+	- for reverse shells to function, the attacker machine needs an active listener
+- ***Bind Shells***:
+	- causes the attacker box to connect to the victim system
+	- attacker opens a TCP port on the victim's machine and hosts the shell through that port. 
+
+
+# 1.4 Enterprise Environment Overview
+- consists of multiple servers, all with their own role:
+	- ***Web Servers***:
+		- software that understands URLs and HTTP. Accessible via domain names of the websites it stores, and delivers content of the websites hosted to the user requesting access.
+		- external web servers are placed in the DMZ to serve client requests 
+		- can also be connected to the enterprise network
+	- ***Mail Servers:***
+		- handles and delivers email over a network (often over the internet)
+		- the email client handling the delivery of messages connects to the server via ***Simple  Mail Transfer Protocol (SMTP)***
+		- your email client will download messages from POP3 servers.
+	- ***Database Servers***:
+		- used to store and manage databases. Manages data access for authorized users
+		- useful for organizations managing large volumes of data daily
+		- also allows users and apps to centrally access data
+		- operations such as modifying data is done via SQL queries
+	- ***Bastion Host*** or ***Jump Servers***:
+		- computer on a network configured to withstand attacks
+		- generally hosts a single application (like a proxy server) and all other services are removed to reduce the threat to the computer
+		- typically accessed via SSH or RDP
+		- once you've connected to it, it acts as a 'jump' server, meaning it allows you to use SSH or RDP to log into other instances that may exist within private subnets
+	- ***Automation Servers***:
+		- considered to be a crucial aspect of software development workflows
+		- helps automate building, testing, and deploying by facilitating CI/CD
+		- examples: Jenkins Server, TeamCity, Bamboo
+	- ***Active Directory***:
+		- directory or database that:
+			- manages the resources of an organization
+			- provides access rules governing relationships between resources
+			- stores information about objects on the network
+		- ***Forests/Domains***:
+			- ***Forest*** = single instance of active directory (collection of DCs trusting each other)
+			- ***Domains*** = containers in a forest
+			- ***Organizational Units (OUs)*** = logical grouping of resources in a domain
+			- ***Groups*** = collections of users or other groups with varying privileges
+		- ***Objects:***
+			- defined as the physical entities that make up the organized network
+			- ***Domain users*** = user accounts that authenticate to machines and servers in the domains
+			- ***Domain Groups (Global Groups***) = assigns permissions to access any resources in any domain
+			- ***Domain Computers*** = machines assigned membership to a domain
+		- ***Domain Controller (DC)*** = central server that manages resources and responds to security authentication requests such as:
+			- ***Group Policy Objects (GPO)*** = collection of policies applied to objects
+			- ***Ticket Granting Ticket (TGT)*** = ticket used for authentication
+			- ***Ticket Granting Service (TGS)*** = ticket used for authorization
