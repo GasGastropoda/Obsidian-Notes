@@ -66,15 +66,15 @@
 - when an attacker compromises  or gain control of an asset in a network and then uses that asset to move onto other devices in the same network
 - an attacker might install a remote access tool to accomplish lateral movement or use legitimate credentials with native network and OS tools, which at times can be stealthier
 - examples of lateral movement:
-	- internal phishing - gaining access to additional information to exploit other users within the same organization after they already have access to accounts or systems in the environment
-	- remote services - attackers may use valid credentials to log into services and then perform operations in those command line interfaces
+	- **internal phishing** - gaining access to additional information to exploit other users within the same organization after they already have access to accounts or systems in the environment
+	- **remote services** - attackers may use valid credentials to log into services and then perform operations in those command line interfaces
 
 ## Defensive Evasion
 - avoiding detection throughout the compromise
 - attackers bypass detection via obfuscation, hiding in trusted processes, and disabling security software
 - defensive evasion benefits from discovery, but it's related to understanding how an attacker can avoid network defenders (by understanding what security tools are on a system or what processes are running
 - an example of defensive evasion::
-	- impairing defenses - this could be disabling firewalls or AV capabilities that defenders use to audit activity and identify any malicious behavior
+	- **impairing defenses** - this could be disabling firewalls or AV capabilities that defenders use to audit activity and identify any malicious behavior
 
 ## Discovery
 - important in situational awareness, a skill attackers use to figure out the organization's environment
@@ -87,5 +87,31 @@
 - process of gathering and measuring information from a system
 - can be any sensitive information in a system or network
 - examples include:
-	- Archive Collected Data = compressed/encrypted data collected before exfiltration
-	- Clipboard
+	- **Archive Collected Data** = compressed/encrypted data collected before exfiltration
+	- **Clipboard Data** = data stored in clipboards from users copying information in applications
+
+## Data Exfiltration
+- once data is identified and packed, attackers now need to find a way to steal it from the network. they can also encrypt and pack the data further if needed to make the process easier
+- examples include:
+	- **Automated Exfiltration** = (it's right in the name) the process is automated after being gathered during the collection phase
+	- **Exfiltration over the physical medium** = can be done with something like a removable drive
+
+# 1.3 The Red Team Infrastructure
+- ***C2 Server*** = used by attackers to maintain communications with the botnet
+- ***Payload Server*** = the server that hosts all malicious scripts and executables. it's configured to be accessible from both the attacker and the victim's network.
+- ***Redirector server***  = a system designed to proxy all traffic to the C2. 
+	- threat actors don't use one singular system to do their attacks. they configure systems to act as pivot points (also known as ***redirectors***) to the C2 server. this prevents the client from seeing the actual C2.
+	- the redirectors sit between the victim's environment and the attacker's network. It listens for connections from the victim's machine and forwards it to the attacker. 
+- ***Adversary emulation*** = tactic where someone or something else is being mimicked. What's being replicated is based on the previously collected threat intelligence. Could be a company competitor.
+	- to emulate the adversary, you need to mimic the tactics, techniques, and procedures (TTP) and use them in the environment
+- ***Adversary simulation*** = a tactic where you pretend to be an attacker, but it's not necessarily a real entity. The TTPs are whatever you have at hand. 
+- ***Advance Persistent Threat (APT)*** = a threat actor (usually a group with high skill or funding) that gains access to the computer network and remains undetected for long periods of time
+- ***Exploit*** = the code the attacker uses to take advantage of a vulnerability
+- ***Vulnerability*** = the loophole in software/hardware putting it at risk. Also considered the weakest link allowing an attacker to compromise the system.
+- ***Demilitarized Zone Network (DMZ Network)***:
+	- provides an interface to an untrusted external network
+	- the systems most vulnerable to attacks are the ones in the network that provide services to those outside of the LAN (ex. email, web, DNS, etc.) all of which are present in the DMZ.
+	- the DMZ allows access to resources from untrusted networks while keeping the rest of the network private. All devices that need to communicate with the untrusted networks will sit in the zone.
+- ***Militarized Zone Network (MZ Network)***:
+	- zoning with maximum security makes it the most secure segment in the environment
+	- these zones would harbor any devices that contain critical information about the organization. All operations in the organization would be managed from the militarized network.
