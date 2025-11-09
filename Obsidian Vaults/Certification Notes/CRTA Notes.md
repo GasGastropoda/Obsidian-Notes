@@ -77,3 +77,15 @@
 	- impairing defenses - this could be disabling firewalls or AV capabilities that defenders use to audit activity and identify any malicious behavior
 
 ## Discovery
+- important in situational awareness, a skill attackers use to figure out the organization's environment
+- the techniques allow adversaries to observe the environment and decide how they'll act
+- assists with gathering where critical assets are located in network architecture
+- example of discovery:
+	- **File and Directory discovery** = file and directory enumeration to find locations of a host/network share to see information in a filesystem
+
+## Data Collection
+- process of gathering and measuring information from a system
+- can be any sensitive information in a system or network
+- examples include:
+	- Archive Collected Data = compressed/encrypted data collected before exfiltration
+	- Clipboard
