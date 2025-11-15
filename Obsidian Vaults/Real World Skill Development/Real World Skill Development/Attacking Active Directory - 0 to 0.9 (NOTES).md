@@ -137,3 +137,71 @@
 		- User SID is similar to domain SID (it's actually a combination of domain SID and the user's Relative Identifier (RID) (the last number appearing in the user's SID))
 	- some tools display SID instead of the username (since it's used in structures like security descriptors) so being aware of its format is important
 	- `DistinguishedName` is used by LDAP API to identify objects. If doing a query to the database via LDAP, you'll see objects be referenced in that manner. 
+- **User Secrets**
+	- the database needs to store secrets to allow the DC to authenticate the user
+	- passwords are not stored in plaintext, but there are secrets derived from it that are saved:
+		- NT hash (older accounts have the LM hash)
+		- kerberos keys
+	- user secrets cannot be retrieved by non-admin users, nor do domain computers have access to them. Authentication is left to the DC.
+	- user secrets can only be retrieved with admin privileges (or equivalent) to:
+		- dump the domain database with a desync attack
+		- grabbing `C:\Windows\NTDS\ntds.dit` file from the DC
+- **LM/NT Hashes**
+	- both stored in windows local Security Account Manager (SAM) and AD NTDS DBs to authenticate local and domain users
+	- both hashes are 16 bytes long
+	- LM Hashes are weak and have not been used since Vista/Server 2008
+	- ==Procedure to create an LM hash:==
+		1.  convert password to uppercase (reduces search space for brute force attack)
+		2. if pwd < 14 char, pad with NULL characters until the length is 14 char. if pwd > 14 char, it's truncated (useless to have passwords greater than 14 characters)
+		3. password is split into two strings of 7 bytes
+		4. each string is used a key to encrypt the `KGS!+#$%` string with DES, this results in two hashes
+		5. the results are combined in order to form the hash
+	- ==Procedure to create an NT hash:==
+		- keep in mind, it does not use a salt, so it can be cracked with rainbow tables or any other precomputed values
+		1. starts with the user's password in plaintext
+		2. converts the password into UTF-16LE byte sequence
+		3. applies MD4 to the bytes
+		4. the result is a 128-bit value represented as a 32 char hex string
+	- Keep in mind that NT hashes can also be called an NTLM hash. This can be confusing since the NTLM protocol has hashes of its own.
+	- tools extracting LM and NT hashes will return an output with several lines. Each line is a user, and the format would be: `<username>: <RID>:<LM>:<NT>:::` 
+		- if LM is not in use, there will be the hash of an empty string: `aad3b435b51404eeaad3b435b51404ee`
+	- Pentesters need to recognize NT hashes. Even though they're not passwords, they're used for authentication in windows machines. getting your hands on them allows you to perform:
+		- **Pass-The-Hash (PtH)** = stealing a hashed credential and using it to create a new user session
+		- **Overpass-The-Hash** = also known as "pass-the-key" or "hash-to-ticket"; attacker uses the has to request and receive a valid kerberos TGT.
+	- you can try to crack the hashes themselves with hashcat to recover the original password. 
+- **Kerberos Keys**
+	- they're also derived from the user password
+	- used in the kerberos authentication protocol
+	- used to ask for kerberos tickets representing the user in the authentication protocol
+	- there are several keys, each one used by different versions of kerberos encryption:
+
+| Kerberos Key | Algorithm it's used by                                                                                        |
+| ------------ | ------------------------------------------------------------------------------------------------------------- |
+| AES 256      | AES256-CTS-HMAC-SHA1-96; commonly used by kerberos. Pentesters should use this one to avoid triggering alarms |
+| AES 128      | AES128-CTS-HMAC-SHA1-96                                                                                       |
+| DES          | deprecated DES-CBC-MD5                                                                                        |
+| RC4          | NT hash of the user; RC4-HMAC                                                                                 |
+- **UserAccountControl**
+	- user class property
+	- not to be confused with User Account Control mechanism
+	- contains a series of flags relevant to security and domain.
+
+| Flag                           | Description                                                                                                                                |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| ACCOUNTDISABLE                 | account is disabled                                                                                                                        |
+| DONT_REQUIRE_PREAUTH           | account doesn't need kerberos pre-authentication                                                                                           |
+| NOT_DELEGATED                  | account cannot be delegated through kerberos                                                                                               |
+| TRUSTED_FOR_DELEGATION         | Kerberos Unconstrained Delegation is enabled for this account and its services. `SeEnableDelegationPrivilege`is needed to modify this flag |
+| TRUSTED_TO_AUTH_FOR_DELEGATION | kerberos S4U2Self extension is enabled for the account and its services. `SeEnableDelegationPrivilege` is needed to modify this flag       |
+- **Other user properties**
+	- other properties that are useful when pentesting:
+
+
+| property                 | description                                                                                                                                                          |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Description              | user description. can give an idea of what the user's permissions are. Can sometimes include their password                                                          |
+| AdminCount               | indicates if the user (or group) is protected by the `AdminSDHolder` object, or has previously been so. Since it's sometimes not updated, it's used only a reference |
+| MemberOf                 | the groups which the user is a member. Logical property and generated from the groups Members property                                                               |
+| PrimaryGroupID           | user's primary group. Doesn't appear under MemberOf property.                                                                                                        |
+| ServicePrincipalName     | user's services. useful in a kerberoast attack.                                                                                                                      |
+| msDS-AllowedToDelegateTo | services which the user (and its own services) can impersonate clients via Kerberos Constrained Delegation. `SeEnableDelegationPrivilege`is required to modify.      |
