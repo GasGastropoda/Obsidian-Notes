@@ -191,3 +191,61 @@
 			- ***Group Policy Objects (GPO)*** = collection of policies applied to objects
 			- ***Ticket Granting Ticket (TGT)*** = ticket used for authentication
 			- ***Ticket Granting Service (TGS)*** = ticket used for authorization
+		- ***AD Components***:
+			
+
+| Logical Components         | Definition                                                         |
+| -------------------------- | ------------------------------------------------------------------ |
+| Sites                      | collection of users, groups, and computers                         |
+| Organizational Units (OUs) | allows for better management and organization of securable objects |
+| Schema                     | attributes of a securable object                                   |
+| Partitions                 | directories (application, configuration, etc)                      |
+| Domain Trees               | collection of domain controllers that share a common root domain   |
+| Domain                     | administrative boundary of users and services                      |
+| Forests                    | collection of domains that share a common AD DB                    |
+
+| Physical Components         | Definition                                                                                         |
+| --------------------------- | -------------------------------------------------------------------------------------------------- |
+| Domain Controllers          | contains a copy of the AD DB                                                                       |
+| Read-Only Domain Controller | contains a copy of the AD DB                                                                       |
+| Global Catalogue            | Read-only copy of all domain names in context of a forest. Used to speed up searches in the domain |
+| Data Store                  | exists on each server. Stores information on the AD DB                                             |
+		- ***Privilege Groups:***
+			
+
+| Group Name                           | Privileges                                                 |
+| ------------------------------------ | ---------------------------------------------------------- |
+| Domain Admin (DA)                    | admin access to all resources in a domain                  |
+| Enterprise Admin (DA)                | exists only on the forest root. Added to DA of every child |
+| BUILTIN\Administrators (Local Group) | local admin on a DC                                        |
+| Server Operators                     | has the capability to administrate the domain server       |
+| Account Operators                    | manages any user not in a privileged group                 |
+	- ***Kerberos Authentication***:
+		- In AD, all queries and authentication processes are done via tickets (no passwords travel through the network)
+		- ***Ticket*** = form of authentication and authorization token categorized as either:
+			- ***Ticket Granting Ticket (TGT)*** = Authentication
+			- ***Ticket Granting Service (TGS)*** = Authorization
+		- Tickets are stored in memory and can be extracted to exploit the fact that tickets represent user credentials
+		- TGS allows you to access a server's service in a domain
+		- Authentication Process:
+			1. Domain UN and timestamp is sent to the DC in an encrypted message from the employee's machine
+			2. The DC decrypts the message and performs a check to confirm data sent is accurate
+			3. if correct, the DC sends back an encrypted TGT
+			4. employee machine stores the TGT in memory. This can be re-requested by the local session manager
+			5. employee machine sends the TGT to the DC to request TGS (which also states the service they want to access)
+			6. the DC responds with a TGS (response is based on the user's privileges in terms of using a TGT)
+			7. employee machine uses the TGS to gain authenticated + authorized access to the DB Server
+			8. any optional validation requests are performed between the DB and the DC
+	- **Kerberos Delegation***:
+		- allows an authenticated domain user's credentials to be reused to access resources hosted on a different server in the same domain
+		- useful in multi-tier applications/architecture
+			- ***multi-tier applications*** = functions are split into separate layers and may sometimes be hosted on different physical servers
+		- the service account for the application server must be trusted in order for delegation to make requests as an authenticated domain user
+		- the delegation process is as follows:
+			1. Domain user requests a TGT by verifying their credentials
+			2. The DC provides the user a TGT
+			3. The user requests a TGS from the DC in order to access a service hosted on the Application Server
+			4. the DC responds with a TGS to access said service
+			5. user sends their TGT and TGS to the app server
+			6. app server's service account uses the user's TGT to request a TGS from the DC in order to gain access to the DB Server
+			7. Application server's service account connects to the DB as a Domain User
