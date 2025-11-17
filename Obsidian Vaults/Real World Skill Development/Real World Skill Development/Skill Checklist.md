@@ -28,6 +28,7 @@
 ## Scripting/Automation
 - Powershell on MS Learn
 - Python for Analysts
+- I do touch a little bit on python with my internship project, refer to [[Stuff I've Learned While Coding]] to see exactly what knowledge I've obtained
 
 ## Vulnerability & Patch
 - Nessus Essentials 

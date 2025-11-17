@@ -1,0 +1,48 @@
+
+## Modules:
+- Requests:
+	- popular python library used to send HTTP requests
+	- used to download web pages from the internet
+- BeautifulSoup (from bs4):
+	- HTML parser that extracts data from the web pages
+	- turns raw HTML into something you can search through
+- urllib.parse:
+	- breaks URLs apart, or rebuilds them
+	- `urlparse(url)` splits the URL into domain, path, and query parameters
+	- `parse_qs(querystring)` turns something like '?q=hello&x=1' into Python dict
+	- `urljoin(base, link)` makes relative links into absolute ones
+	- used to follow links, detect spam parameters, and build full URLs
+- urllib.robotparser:
+	- `RobotFileParser` reads robots.txt files
+	- checks if you're allowed to scrape a page
+- time:
+	- timestamps, delays, etc
+	- used for rate limiting and exponential backoff
+- csv:
+	- lets you write CSV files
+	- in the script, should let you export CTF data into something spreadsheet friendly
+- json:
+	- converts python to json and vice versa
+	- should allow you to save scraped data and write cached responses to the disk
+- datetime:
+	- everything that's related to date and time
+	- in the scraper, should be used to track cache expiration and assist with timestamps on data scraped
+- typing:
+	- used purely for readability
+	- tells anyone reading what type each function is expecting
+	- not necessarily required? but it's helpful
+- re:
+	- regular expressions!
+	- should be used in the scraper to detect dates, keywords, paywalls, and anything related to the data we're looking for
+- hashlib:
+	- used for hashing
+	- should be used to create cache keys based on the URL with SHA256
+- pathlib:
+	- modern path handler
+	- creates directories 
+	- should be used to manage cache files
+- dataclasses:
+	- decorator that creates classes to store data
+- logging:
+	- a fancier way to just print()
+	- used to log any info, warnings, errors, or debug messages
