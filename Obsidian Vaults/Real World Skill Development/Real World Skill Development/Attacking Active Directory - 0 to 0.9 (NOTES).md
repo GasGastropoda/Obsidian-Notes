@@ -205,3 +205,55 @@
 | PrimaryGroupID           | user's primary group. Doesn't appear under MemberOf property.                                                                                                        |
 | ServicePrincipalName     | user's services. useful in a kerberoast attack.                                                                                                                      |
 | msDS-AllowedToDelegateTo | services which the user (and its own services) can impersonate clients via Kerberos Constrained Delegation. `SeEnableDelegationPrivilege`is required to modify.      |
+
+### Important Users
+- multiple ways to check what users are available:
+	- on the DC: `net user /domain`
+	- in powershell: `get-aduser -filter * | select samaccountname`
+	- both commands don't need special privileges
+- the default administrator user is the most privileged account in the domain. if you can compromise this account, you have control of the domain and even a forest via SID History attack
+- `krbtgt` account is important. secrets (NT hash and kerberos keys) are used to encrypt the tickets used by kerberos to authenticate users. if you can compromise this account, you can create "Golden Tickets".
+	- this account can only be compromised by dumping the domain database (since it's only used in the DC, an act requiring administrative privileges in the domain)
+
+### Computer Accounts
+- in an organization, each person has their own user, and certain people can have more than one user to perform specific tasks
+- each computer in a domain has its own user, since they also need to perform actions of their own in a domain (ex. updating group policies, verifying domain credentials, etc)
+- difference between user accounts and computer accounts: 
+	- users are stored in a **user class** within the database
+	- others are stored as instances of the **computer class** (a subclass of user class)
+	- computer account names are the hostname followed by a dollar sign
+		- you can check them using this command in powershell:
+			- `get-adobject -ldapfilter "objectlcass=user" -properties samaccountname | select samaccountname`
+- computer objects save information about their OS. the info can be retrieved using the attributes `operatingsystem` and `operatingsystemversion`
+- many organizations follow a naming convention, so if you can figure that out, you can determine which accounts and computers are privileged and can be used to access sensitive information. 
+	- you can check attributes of objects to find information about them (and potentially cleartext passwords) by using attributes like `description`
+		- the `find-domainobjectpropertyoutlier` cmdlet of [PowerView ](https://github.com/PowerShellMafia/PowerSploit/tree/master/Recon)can be useful for this purpose!
+
+### Trust Accounts
+- some usernames can end with a dollar sign!
+- when a trust is established, a user object is created in each domain that stores the trust key. The name of the user is the NetBIOS name of the other domain, followed with a dollar sign
+	- if you can get the secrets of this account, you can create inter-realm kerberos tickets
+	- the object stores trust keys
+
+
+## Groups
+- groups are stored in the domain database and can be identified by `samaccountname` attribute or SID
+- to list the groups and their members: `get-adgroup -filter * | select samaccountname`
+
+### Important Groups
+- **administrative groups:**
+	- for attackers, the best default group to look into is the Domain Admins group, which gives admin privileges to its member in the domain. Knowing who's in this domain is important.
+		- checking domain admins group information in powershell: `get-adgroup "Domain Admins" -Properties members,memberof`
+	- there are other groups that give privileges. 
+	- ***Enterprise Admins:*** provide admin privileges in the entire forest.
+		- only exists in the forest's root domain, but added by default to the administrator's group of all domains in the forest
+	- ***Domain Admins*** are added to the administrators group of the domain, as well as the administrators groups of the domain computers. 
+- **DNSAdmins**:
+	- allow its members to ==execute code in DCs as SYSTEM by using an arbitrary DLL==
+- **Protected Users**:
+	- allows the enforcement of security of accounts. 
+	- members of the group aren't allowed to:
+		- authenticate with NTLM (only kerberos)
+		- use DES or RC4 encryption types in kerberos pre-authn
+		- be delegated with unconstrained/constrained delegation
+		- renew kerberos TGTs beyond initial 4hr lifetime
